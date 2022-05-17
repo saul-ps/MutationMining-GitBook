@@ -8,6 +8,8 @@ En este apartado se describe los aspectos a tener en cuenta a la hora de generar
 ```
 ## Modificar < mutations > por el nombre del objeto RData
 
+load(stringr)
+
 # Cambiar caracter hexadecimal a coma
 colnames_to_change <- str_subset(colnames(mutations), "^CLN")
 for (col in colnames_to_change) {

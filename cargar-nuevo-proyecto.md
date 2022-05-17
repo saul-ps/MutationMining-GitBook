@@ -1,12 +1,6 @@
 # Cargar nuevo Proyecto
 
-Para añadir un nuevo proyecto a la página web debemos copiar la carpeta del proyecto, cuyo contenido se divide en diferentes archivos `bam`, `bai`, `vcf` y el fichero `RData`, dentro de la siguiente ruta
-
-{% hint style="info" %}
-/data/MutationMiningData/Projects
-{% endhint %}
-
-A continuación, haremos uso del fichero R que se encuentra en la siguiente ruta:
+Para subir un nuevo proyecto a la aplicación web debemos hacer uso del fichero R que se encuentra en la siguiente ruta:
 
 {% hint style="info" %}
 /data/MutationMining/RScript/NewProject/MutationMiningLoadInitial.R
@@ -41,9 +35,6 @@ source(paste0(ROOT_PATH, "MutationMiningLoadProject.R"))
 
 # Obtenemos el id del usuario
 user_id <- get_user(email)
-
-# Crear un nuevo usuario
-# add_user(name, email, passwd)
 ```
 {% endcode %}
 
@@ -73,7 +64,7 @@ if (!user_id) {
   )
   add_project_files(name_project, user_id, filetable, "hg38")
   message("Datos registrados en la BBDD")
-}
+}MutationMiningLoadInitial.R
 ```
 {% endcode %}
 
