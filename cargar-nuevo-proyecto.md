@@ -29,6 +29,9 @@ email <- "example@usal.es"
 project_dir <- "/data/MutationMiningData/Projects/PRJEB41088_AngelmanTrio"
 name_project <- "PRJEB41088_AngelmanTrio"
 
+# Crear un nuevo usuario
+# add_user(name, email, passwd)
+
 # Archivo R necesario con las siguientes funciones:
 # Crear/eliminar proyectos, insertar/editar/borrar en MySQL
 source(paste0(ROOT_PATH, "MutationMiningLoadProject.R"))
