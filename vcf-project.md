@@ -3,6 +3,7 @@
 En este apartado se describe los aspectos a tener en cuenta a la hora de generar nuestro archivo VCF:&#x20;
 
 * Evitar comillas en nombres de muestras (samples)
+* El nombre del objeto contenido en el archivo RData debe ser igual al nombre del fichero
 * Ejecutar el siguiente código R para generar el objeto RData
 
 ```
@@ -23,5 +24,3 @@ for (col in colnames_to_change) {
     mutations[[col]] <- as.numeric(mutations[[col]])
 }
 ```
-
-* El nombre del objeto contenido en el archivo .RData debe ser igual al nombre del fichero
