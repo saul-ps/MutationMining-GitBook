@@ -73,7 +73,7 @@ if (!user_id) {
   )
   add_project_files(name_project, user_id, filetable, "hg38")
   message("Datos registrados en la BBDD")
-}MutationMiningLoadInitial.R
+}
 ```
 {% endcode %}
 

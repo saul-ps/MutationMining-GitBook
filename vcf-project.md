@@ -21,3 +21,5 @@ for (col in colnames_to_change) {
     mutations[[col]] <- as.numeric(mutations[[col]])
 }
 ```
+
+* El nombre del objeto contenido en el archivo .RData debe ser igual al nombre del fichero
