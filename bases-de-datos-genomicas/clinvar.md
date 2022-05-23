@@ -9,10 +9,11 @@ wget https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz
 wget https://snpeff.blob.core.windows.net/versions/snpEff_latest_core.zip
 unzip snpEff_latest_core.zip 
 mv clinvar.vcf.gz /data/MutationMiningData/GenomeDDBB/CLINVAR/
-mv snpEff/SnpSift.jar /data/MutationMiningData/GenomeDDBB/CLINVAR/    
+mv snpEff/SnpSift.jar /data/MutationMiningData/GenomeDDBB/CLINVAR/
+rm -r snpEff_latest_core.zip snpEff/    
 ```
 
-#### Manual
+#### Manual (opcional)
 
 En el siguiente [enlace](https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf\_GRCh38/) debemos descargar el fichero llamado "clinvar.vcf.gz". Además, para trabajar con este archivo tendremos que dirigirnos a [Download SnpEff](https://snpeff.blob.core.windows.net/versions/snpEff\_latest\_core.zip) y así poder descargar el archivo comprimido necesario para el filtrado de datos. Posteriormente, extraemos el contenido del paquete y nos quedaremos únicamente con el fichero "SnpSift.jar".&#x20;
 
