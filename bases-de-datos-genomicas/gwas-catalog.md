@@ -174,18 +174,21 @@ gwas_catalog_BSgenome <- gwas_catalog_BSgenome %>%
     # Genotipo_0 = AA , Genotipo_1 = AT , Genotipo_2 = TT
     filter(RISK.ALL != REF)
 
-# Borramos los archivos que no son necesarios para ahorra espacio en disco
-used_files <- list.files(PATH_GWAS_CATALOG)
+# Borramos los archivos que no son necesarios para ahorrar espacio en disco
+# Excepto los archivos históricos RData
+used_files <- str_subset(list.files(PATH_GWAS_CATALOG), ".RData$", negate=T)
 for (file in used_files) {
     path_file <- paste0(PATH_GWAS_CATALOG, file)
     message(paste0("Borrando ", file, "..."))
     file.remove(path_file)
 }
 
+# Asignamos el nombre del archivo RData con la fecha actual
+name_DDBB <- paste0("gwas_catalog_BSgenome_", Sys.Date())
+assign(name_DDBB, gwas_catalog_BSgenome)
+
 # Guardamos la tabla en un fichero formato RData
-save(gwas_catalog_BSgenome,
-    file = paste0(PATH_GWAS_CATALOG, "gwas_catalog_BSgenome.RData")
-)
+save(list = name_DDBB, file = paste0(PATH_GWAS_CATALOG, name_DDBB, ".RData"))
 ```
 
 ### Visualización en aplicación web
