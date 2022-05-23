@@ -2,6 +2,17 @@
 
 ### Descarga de archivos
 
+#### Script
+
+```bash
+wget https://erepo.clinicalgenome.org/evrepo/api/classifications/all -O "file.txt"
+tail -c +2 file.txt  > erepo.tabbed.txt
+rm file.txt
+mv erepo.tabbed.txt /data/MutationMiningData/GenomeDDBB/CLINICALGENOME/
+```
+
+#### Manual (opcional)
+
 En el siguiente [enlace](https://erepo.clinicalgenome.org/evrepo/) debemos ir hacia el botón "Download" y pulsar la opción "Tab-delimited", esto provocará la descarga del fichero denominado "erepo.tabbed.txt".&#x20;
 
 {% hint style="info" %}
@@ -48,15 +59,18 @@ colnames(clinical_genome) <- c(
 )
 
 # Borramos los archivos que no son necesarios para ahorra espacio en disco
-used_files <- list.files(PATH_CLINICAL_GENOME)
+# Excepto los archivos históricos RData
+used_files <- str_subset(list.files(PATH_CLINICAL_GENOME), ".RData$", negate=T)
 for (file in used_files) {
     path_file <- paste0(PATH_CLINICAL_GENOME, file)
     message(paste0("Borrando ", file, "..."))
     file.remove(path_file)
 }
 
+# Asignamos el nombre del archivo RData con la fecha actual
+name_DDBB <- paste0("clinical_genome_", Sys.Date())
+assign(name_DDBB, clinical_genome)
+
 # Guardamos la tabla en un fichero formato RData
-save(clinical_genome,
-    file = paste0(PATH_CLINICAL_GENOME, "clinical_genome.RData")
-)
+save(list = name_DDBB, file = paste0(PATH_CLINICAL_GENOME, name_DDBB, ".RData"))
 ```
