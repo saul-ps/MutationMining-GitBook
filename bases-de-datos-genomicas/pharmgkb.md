@@ -2,6 +2,19 @@
 
 ### Descarga de archivos
 
+#### Script
+
+```bash
+wget https://api.pharmgkb.org/v1/download/file/data/clinicalAnnotations.zip
+mkdir pharmgkb
+unzip clinicalAnnotations.zip -d pharmgkb/
+rm clinicalAnnotations.zip 
+mv pharmgkb/clinical_annotations.tsv /data/MutationMiningData/GenomeDDBB/PHARMGKB/
+rm -r pharmgkb/
+```
+
+#### Manual (opcional)
+
 En el siguiente [enlace](https://www.pharmgkb.org/downloads) debemos descargar el fichero llamado "clinicalAnnotations.zip", posteriormente descomprimimos el archivo y nos quedamos únicamente con el fichero "clinical\_annotations.tsv".
 
 Seleccionamos este fichero y lo guardamos en la ruta:
@@ -43,18 +56,21 @@ colnames(pharmgkb) <- c(
     "PhenotypeCategoryPharm", "Drugs", "Evidence", "URL"
 )
 
-# Borramos los archivos que no son necesarios para ahorra espacio en disco
-used_files <- list.files(PATH_PHARMGKB)
+# Borramos los archivos que no son necesarios para ahorrar espacio en disco
+# Excepto los archivos históricos RData
+used_files <- str_subset(list.files(PATH_PHARMGKB), ".RData$", negate=T)
 for (file in used_files) {
     path_file <- paste0(PATH_PHARMGKB, file)
     message(paste0("Borrando ", file, "..."))
     file.remove(path_file)
 }
 
+# Asignamos el nombre del archivo RData con la fecha actual
+name_DDBB <- paste0("pharmgkb_", Sys.Date())
+assign(name_DDBB, pharmgkb)
+
 # Guardamos la tabla en un fichero formato RData
-save(pharmgkb,
-    file = paste0(PATH_PHARMGKB, "pharmgkb.RData")
-)
+save(list = name_DDBB, file = paste0(PATH_PHARMGKB, name_DDBB, ".RData"))
 ```
 
 ### Visualización en aplicación web
