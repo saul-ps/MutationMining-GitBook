@@ -103,7 +103,7 @@ name_DDBB <- paste0("clinvar_", Sys.Date())
 assign(name_DDBB, clinvar)
 
 # Guardamos la tabla en un fichero formato RData
-save(clinvar, file = paste0(PATH_CLINVAR, "clinvar.RData"))
+save(list = name_DDBB, file = paste0(PATH_CLINVAR, name_DDBB, ".RData"))
 ```
 
 ### Visualización en aplicación web
