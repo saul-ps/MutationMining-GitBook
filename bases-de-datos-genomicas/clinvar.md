@@ -6,11 +6,11 @@
 
 ```bash
 wget https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz
-wget https://snpeff.blob.core.windows.net/versions/snpEff_latest_core.zip
-unzip snpEff_latest_core.zip 
+wget https://deac-ams.dl.sourceforge.net/project/snpeff/snpEff_v4_3t_core.zip
+unzip snpEff_v4_3t_core.zip
 mv clinvar.vcf.gz /data/MutationMiningData/GenomeDDBB/CLINVAR/
 mv snpEff/SnpSift.jar /data/MutationMiningData/GenomeDDBB/CLINVAR/
-rm -r snpEff_latest_core.zip snpEff/    
+rm -r clinEff/ snpEff/ snpEff_v4_3t_core.zip    
 ```
 
 #### Manual (opcional)
