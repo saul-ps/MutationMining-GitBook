@@ -14,11 +14,11 @@
 * [Clinical Genome](bases-de-datos-genomicas/clinical-genome.md)
 * [PharmGKB](bases-de-datos-genomicas/pharmgkb.md)
 * [GWAS Catalog](bases-de-datos-genomicas/gwas-catalog.md)
-* [OMIM](bases-de-datos-genomicas/omim.md)
+* [OMIM (no usado)](bases-de-datos-genomicas/omim.md)
 * [Mapa Conceptual](bases-de-datos-genomicas/mapa-conceptual.md)
 
 ## ORÍGENES
 
-* [gnomAD](origenes/gnomad.md)
 * [HapMap](origenes/hapmap.md)
 * [1000 Genomes](origenes/1000-genomes.md)
+* [gnomAD (no usado)](origenes/gnomad.md)
