@@ -4,7 +4,7 @@
 
 #### Script
 
-Ejecutaremos el primer script que a su vez ejecutará los scripts descritos posteriormente
+Ejecutaremos el primer script que a su vez ejecutará los scripts descritos posteriormente. Para ello, guardamos los ficheros `.sh` con salto de lineas `LF` ([evitar que se añadan saltos de línea](https://stackoverflow.com/questions/22236197/how-to-remove-0d-from-end-of-url-when-using-wget)) en el directorio de ejecución:&#x20;
 
 ```bash
 wget https://www.ebi.ac.uk/gwas/api/search/downloads/full -O "gwas_catalog.tsv"
@@ -13,7 +13,7 @@ wget https://www.ebi.ac.uk/gwas/api/search/downloads/full -O "gwas_catalog.tsv"
 # sudo apt install jq
 # sudo apt install parallel
 
-# Obtener citas anuales por artículo (guardar scripts en el directorio)
+# Obtener citas anuales por artículo
 awk -F'\t' '{if (NR!=1) print $2}' gwas_catalog.tsv | uniq > pubmedid.txt
 cat pubmedid.txt | parallel -j1 sh getPubmedData.sh
 ls *.json | parallel -j1 sh ParseJsonPubmed.sh {} > articles.tab
@@ -22,10 +22,8 @@ rm *.json
 
 {% code title="getPubmedData.sh" %}
 ```bash
-link="http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&retmode=json&id="
-# echo $1
-linkdown="wget "$link""$1" -O "$1".json"
-$linkdown
+link='https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&retmode=json&id='
+wget "$link$1" -O $1'.json'
 ```
 {% endcode %}
 
