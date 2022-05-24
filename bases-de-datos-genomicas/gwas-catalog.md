@@ -2,6 +2,43 @@
 
 ### Descarga de archivos
 
+#### Script
+
+Ejecutaremos el primer script que a su vez ejecutará los scripts descritos posteriormente
+
+```bash
+wget https://www.ebi.ac.uk/gwas/api/search/downloads/full -O "gwas_catalog.tsv"
+
+# (Instalar si fuera necesario)
+# sudo apt install jq
+# sudo apt install parallel
+
+# Obtener citas anuales por artículo (guardar scripts en el directorio)
+awk -F'\t' '{if (NR!=1) print $2}' gwas_catalog.tsv | uniq > pubmedid.txt
+cat pubmedid.txt | parallel -j1 sh getPubmedData.sh
+ls *.json | parallel -j1 sh ParseJsonPubmed.sh {} > articles.tab
+rm *.json
+```
+
+{% code title="getPubmedData.sh" %}
+```bash
+link="http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&retmode=json&id="
+# echo $1
+linkdown="wget "$link""$1" -O "$1".json"
+$linkdown
+```
+{% endcode %}
+
+{% code title="ParseJsonPubmed.sh" %}
+```bash
+filename=$1
+# pubmedid=${filename%.*}
+jq -r '.result | .[.uids[0]] as $a| [.uids[0],$a.source,$a.pmcrefcount,$a.pubdate] | @csv' $1
+```
+{% endcode %}
+
+#### Manual (opcional)
+
 En el siguiente [enlace](https://www.ebi.ac.uk/gwas/docs/file-downloads) debemos descargar el fichero llamado "All associations v1.0". Una vez descargado cambiamos su nombre por "gwas\_catalog.tsv".
 
 {% hint style="info" %}
