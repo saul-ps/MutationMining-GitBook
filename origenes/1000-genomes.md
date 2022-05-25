@@ -2,7 +2,7 @@
 
 ### Descarga de archivos y filtrado de frecuencias por población
 
-Para la creación de los directorios de trabajo y la descarga de la base de datos necesitaremos ejecutar el script "index.sh" que a su vez ejecutara en segundo plano los otros scripts descritos en esta sección:
+Para la creación de los directorios de trabajo y la descarga de la base de datos necesitaremos ejecutar el script "index.sh" que a su vez ejecutara en segundo plano los otros scripts descritos en esta sección (debemos guardar todos los ficheros en el mismo directorio de ejecución):
 
 {% code title="index.sh" %}
 ```bash
