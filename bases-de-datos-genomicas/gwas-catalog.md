@@ -23,6 +23,7 @@ rm *.json
 {% code title="getPubmedData.sh" %}
 ```bash
 link='https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&retmode=json&id='
+# asd# echo $1
 wget "$link$1" -O $1'.json'
 ```
 {% endcode %}
