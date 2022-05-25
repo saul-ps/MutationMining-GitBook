@@ -18,6 +18,9 @@ awk -F'\t' '{if (NR!=1) print $2}' gwas_catalog.tsv | uniq > pubmedid.txt
 cat pubmedid.txt | parallel -j1 sh getPubmedData.sh
 ls *.json | parallel -j1 sh ParseJsonPubmed.sh {} > articles.tab
 rm *.json
+
+mv articles.tab gwas_catalog.tsv /data/MutationMiningData/GenomeDDBB/GWASCatalog/
+rm *.sh *.txt
 ```
 
 {% code title="getPubmedData.sh" %}
