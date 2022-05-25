@@ -2,10 +2,9 @@
 
 ### Descarga del programa PLINK y los archivos HapMap
 
-En el siguiente [enlace](https://zzz.bwh.harvard.edu/plink/download.shtml) debemos descargar el fichero llamado "plink-1.07-x86\_64.zip", en la sección "Download". Una vez descargado el archivo comprido, abrimos el terminal en la dirección dónde esta descargado este archivo y ejecutamos el siguiente script para obtener las frecuencias poblacionales:
-
 {% code title="script_hapmap.sh" %}
 ```bash
+wget https://zzz.bwh.harvard.edu/plink/dist/plink-1.07-x86_64.zip
 path_hapmap='/data/hapmap'
 mkdir -p $path_hapmap
 mv plink-1.07-x86_64.zip $path_hapmap
