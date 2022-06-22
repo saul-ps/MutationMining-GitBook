@@ -70,6 +70,7 @@ versions <- rbind(
   clinvar_version, clinical_genome_version, pharmgkb_version,
   gwas_catalog_version, genomes1000_version, hapmap_version
 )
+description <- "Descripción sobre cómo fue generado el proyecto"
 ```
 {% endcode %}
 
@@ -97,7 +98,7 @@ if (!user_id) {
     type = c("RData", "vcf", rep("bam", length(bams))),
     path = paste0(project_dir, "/", c(rdata, vcf, bams))
   )
-  add_project_files(name_project, user_id, filetable, "hg38")
+  add_project_files(name_project, user_id, filetable, description, "hg38")
   message("Datos registrados en la BBDD")
 }
 ```
