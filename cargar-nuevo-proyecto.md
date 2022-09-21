@@ -98,7 +98,12 @@ if (!user_id) {
     type = c("RData", "vcf", rep("bam", length(bams))),
     path = paste0(project_dir, "/", c(rdata, vcf, bams))
   )
-  add_project_files(name_project, user_id, filetable, description, "hg38")
+  if (file.exists(paste0(project_dir, "/genres.tsv"))) {
+    path_Genres <- paste0(project_dir, "/genres.tsv")
+  } else {
+    path_Genres <- ""
+  }
+  add_project_files(name_project, user_id, filetable, description, path_Genres, "hg38")
   message("Datos registrados en la BBDD")
 }
 ```
